@@ -12,7 +12,8 @@ yarn global add amplify-app
 1. Setup new React project.
 ```
 create-react-app amplify-datastore-app
-code amplify-datastore-app
+cd amplify-datastore-app
+code .
 yarn start
 
 git init
@@ -25,7 +26,7 @@ git commit -a -m 'Setup new React project.'
 2. Add Amplify DataStore to the project.
 ```
 amplify-app
-yarn add @aws-amplify/core @aws-amplify/datastore
+yarn add @aws-amplify/core @aws-amplify/datastore semantic-ui-css
 
 git add -A
 git commit -a -m 'Add Amplify DataStore to the project.'
@@ -46,6 +47,8 @@ git commit -a -m 'Add GraphQL schema and then generate the model(s).'
 ```
 curl -o src/App.js \
   https://raw.githubusercontent.com/aonz/amplify-datastore-demo/master/App.js
+curl -o src/App.css \
+  https://raw.githubusercontent.com/aonz/amplify-datastore-demo/master/App.css
 
 git add -A
 git commit -a -m 'Use Amplify DataStore in the local mode.'
@@ -55,9 +58,10 @@ git commit -a -m 'Use Amplify DataStore in the local mode.'
 
 5. Deploy the backend on AWS.
 ```
-# Uncomment 2 lines below in src/App.js
-# import awsConfig from "./aws-exports";
-# Amplify.configure(awsConfig);
+# Uncomment 3 lines below in src/App.js
+# // import Amplify from '@aws-amplify/core';
+# // import awsConfig from './aws-exports';
+# // Amplify.configure(awsConfig);
 
 yarn amplify-push
 # About 5 mins
@@ -70,9 +74,10 @@ git commit -a -m 'Deploy the backend on AWS.'
 
 6. Deploy the frontend on AWS.
 ```
-aws codecommit create-repository --repository-name AmplifyDataStoreDemo \
-  --repository-description 'AWS Amplify DataStore Demo'
-git remote add origin ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/AmplifyDataStoreDemo
+aws codecommit create-repository --repository-name amplify-datastore-app \
+  --repository-description 'AWS Amplify DataStore App'
+git remote add origin \
+  ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/amplify-datastore-app
 git push --set-upstream origin master
 
 amplify add hosting
@@ -87,8 +92,5 @@ git commit -a -m 'Deploy the frontend on AWS.'
 7. Cleanup
 ```
 amplify delete
-aws codecommit delete-repository --repository-name AmplifyDataStoreDemo
+aws codecommit delete-repository --repository-name amplify-datastore-app
 ```
-
-## Reference
-https://github.com/sebsto/amplify-datastore-js-e2e

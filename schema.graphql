@@ -1,18 +1,10 @@
-enum PostStatus {
-  ACTIVE
-  INACTIVE
+enum TaskStatus {
+  PENDING
+  COMPLETED
 }
 
-type Post @model {
+type Task @model {
   id: ID!
-  title: String!
-  comments: [Comment] @connection(name: "PostComments")
-  rating: Int!
-  status: PostStatus!
-}
-
-type Comment @model {
-  id: ID!
-  content: String
-  post: Post @connection(name: "PostComments")
+  name: String!
+  status: TaskStatus!
 }
