@@ -58,18 +58,21 @@ git commit -a -m 'Use Amplify DataStore in the local mode.'
 
 5. Deploy the backend on AWS.
 ```
+yarn amplify-push
+# Will take about 5 mins. 
+# While waiting, lookt at the code.
+
 # Uncomment 3 lines below in src/App.js
 # // import Amplify from '@aws-amplify/core';
 # // import awsConfig from './aws-exports';
 # // Amplify.configure(awsConfig);
 
-yarn amplify-push
-# About 5 mins
-
 git add -A
 git commit -a -m 'Deploy the backend on AWS.'
 
 # Test the version with the backend on AWS.
+# - Sync multiple clients.
+# - Online/Offline feature.
 ```
 
 6. Deploy the frontend on AWS.
@@ -82,11 +85,14 @@ git push --set-upstream origin master
 
 amplify add hosting
 # Choose `Hosting with Amplify Console` and then `Continuous deployment`
+# Will take about 5 mins. 
+# While waiting, lookt at AWS services e.g. DynamoDB and AppSync.
 
 git add -A
 git commit -a -m 'Deploy the frontend on AWS.'
 
 # Test the version with both the frontend and backend on AWS.
+# Lookt at Amplify Console.
 ```
 
 7. Cleanup
